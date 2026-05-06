@@ -50,11 +50,23 @@ Current Priority: {priority}
 Respond ONLY with valid JSON matching this format:
 {format_instructions}
 
-Rules:
+Instructions:
 - Be concise and actionable
-- Base sentiment on the customer's actual words, not the issue type
-- Suggest a priority upgrade if the issue is production-blocking or the customer is very frustrated
-- nextAction must be a specific thing the agent can do right now, not a generic suggestion
+- Use customer tone to determine sentiment
+- Upgrade priority if issue is blocking business usage or customer is highly frustrated
+- nextAction must be one immediate action the agent can take now
+- Do not invent missing details
+- Return ONLY valid raw JSON
+- No markdown or code fences
+
+Example:
+    {
+      title: "Cannot access billing invoices after plan upgrade",
+      description:
+        "I upgraded to the Pro plan yesterday but now I can't find my past invoices. The billing section just shows a blank page.",
+      status: "IN_PROGRESS",
+      priority: "HIGH"
+    }
 `);
 
 // Build LLM instance lazily so app doesn't crash on startup if key is missing

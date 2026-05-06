@@ -48,7 +48,7 @@ ticketRouter.patch("/:id/assign", assignTicket);
 ticketRouter.route("/:id/messages").get(getMessages).post(addMessage);
 
 //---------------------------------------------------------------------------
-// ── AI Insight ───────────────────────────────
+// ── AI Insight ─────────────────────────────── DONE
 // GET   /api/tickets/:id/ai-insight             → get current insight
 // POST  /api/tickets/:id/ai-insight             → generate (first time)
 // PATCH /api/tickets/:id/ai-insight             → agent edits insight
