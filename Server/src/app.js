@@ -1,11 +1,8 @@
 import express from "express";
 import cors from "cors";
-// import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";
 
 const app = express();
-
-
-
 
 app.get("/", (req, res) => {
   res.send("hello server");
@@ -18,7 +15,7 @@ app.use(
   })
 );
 
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(
   express.urlencoded({
     extended: true,
@@ -33,12 +30,13 @@ app.use(
   })
 );
 
-
 // import { userRouter } from "./routes/users.routes.js";
+import authRouter from "./routes/auth.routes.js";
+import ticketRoutes from "./routes/ticket.routes.js";
+import miscRouter from "./routes/misc.routes.js";
 
-
-// app.use("/api/v1/users", userRouter);
-
-
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/tickets", ticketRoutes);
+app.use("/api/v1/misc", miscRouter);
 
 export default app;
